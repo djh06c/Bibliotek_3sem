@@ -2,6 +2,9 @@ package org.example.library.catalog.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class Work  {
 
@@ -14,6 +17,10 @@ public class Work  {
     private String details;
     private String authors;
     private String subjects;
+
+
+    @OneToMany(mappedBy = "work", fetch = FetchType.LAZY, cascade =CascadeType.ALL, orphanRemoval = true)
+    private List<Edition> editions = new ArrayList<>();
 
 
     //Getters
